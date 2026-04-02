@@ -1,0 +1,242 @@
+#
+# GHG_CCSCurves.jl
+#
+
+using EnergyModel
+
+module GHG_CCSCurves
+
+import ...EnergyModel: ReadDisk,WriteDisk,Select
+import ...EnergyModel: HisTime,ITime,MaxTime,First,Future,Final,Yr
+import ...EnergyModel: @finite_math,finite_inverse,finite_divide,finite_power,finite_exp,finite_log
+import ...EnergyModel: DB
+
+const VariableArray{N} = Array{Float32,N} where {N}
+const SetArray = Vector{String}
+
+Base.@kwdef struct MControl
+  db::String
+
+  Area::SetArray = ReadDisk(db,"MainDB/AreaKey")
+  AreaDS::SetArray = ReadDisk(db,"MainDB/AreaDS")
+  Areas::Vector{Int} = collect(Select(Area))
+  ECC::SetArray = ReadDisk(db,"MainDB/ECCKey")
+  ECCDS::SetArray = ReadDisk(db,"MainDB/ECCDS")
+  ECCs::Vector{Int} = collect(Select(ECC))
+  Nation::SetArray = ReadDisk(db,"MainDB/NationKey")
+  NationDS::SetArray = ReadDisk(db,"MainDB/NationDS")
+  Nations::Vector{Int} = collect(Select(Nation))
+  Year::SetArray = ReadDisk(db,"MainDB/YearKey")
+  YearDS::SetArray = ReadDisk(db,"MainDB/YearDS")
+  Years::Vector{Int} = collect(Select(Year))
+
+  ANMap::VariableArray{2} = ReadDisk(db,"MainDB/ANMap") # [Area,Nation] Map between Area and Nation
+  SqA0::VariableArray{3} = ReadDisk(db,"MEInput/SqA0") # [ECC,Area,Year] A Term in eCO2 Sequestering Curve (units assume 2016 CN$)
+  SqB0::VariableArray{3} = ReadDisk(db,"MEInput/SqB0") # [ECC,Area,Year] B Term in eCO2 Sequestering Curve (Dimensionless)
+  SqC0::VariableArray{3} = ReadDisk(db,"MEInput/SqC0") # [ECC,Area,Year] C Term in eCO2 Sequestering Curve (Tonnes/Tonnes)
+  SqCCThreshold::VariableArray{3} = ReadDisk(db,"MEInput/SqCCThreshold") # [ECC,Area,Year] Levelized Cost Threshold for Sequestering Curve (2016 CN$/Tonne)
+  SqCCSw::VariableArray{3} = ReadDisk(db,"MEInput/SqCCSw") # [ECC,Area,Year] Sequestering Capital Cost Switch (1=CC Curve)
+  SqTransStorageCost::VariableArray{2} = ReadDisk(db,"MEInput/SqTransStorageCost") # [Area,Year] Sequestering Transportation and Storage Costs (2016 CN$/tonne CO2e)
+
+  #
+  # Scratch Variables
+  #
+  SqC0Mult::VariableArray{1} = zeros(Float32,length(Year)) # [Year]
+end
+
+function ReadTerms(data,ecc2,A,B,C,Th)
+  (; Areas,ECC,Nation,Years) = data
+  (; ANMap) = data
+  (; SqA0,SqB0,SqC0,SqCCThreshold) = data
+
+  CN = Select(Nation,"CN")
+  areas = findall(ANMap[:,CN] .== 1)
+  ecc = Select(ECC,ecc2)
+  for year in Years, area in areas
+    SqA0[ecc,area,year] = A
+    SqB0[ecc,area,year] = B
+    SqC0[ecc,area,year] = C
+    SqCCThreshold[ecc,area,year] = Th
+  end
+  
+  return
+end
+
+function MacroPolicy(db)
+  data = MControl(; db)
+  (; Area,AreaDS,Areas,ECC,Nation) = data 
+  (; Years) = data
+  (; SqCCSw,ANMap,SqA0,SqB0,SqC0) = data
+  (; SqCCThreshold,SqC0Mult,SqTransStorageCost) = data
+
+  CN = Select(Nation,"CN")
+  areas = findall(ANMap[:,CN] .== 1)
+  eccs = Select(ECC,["PulpPaperMills","Petrochemicals","OtherChemicals","Fertilizer",
+                      "Petroleum","Cement","IronSteel","Aluminum","OtherNonferrous",
+                      "HeavyOilMining","LightOilMining","SAGDOilSands","CSSOilSands","OilSandsMining",
+                      "OilSandsUpgraders","SweetGasProcessing","UnconventionalGasProduction",
+                      "SourGasProcessing","UtilityGen","IndustrialGas"])
+
+  # SqCCSq = 3 is "SqCC = SqCCLevelized/Inflation(2016)/(SqCCR+SqOCF)*Inflation"
+  for year in Years, area in Areas, ecc in eccs
+    SqCCSw[ecc,area,year] = 3
+  end
+  
+  WriteDisk(db,"MEInput/SqCCSw",SqCCSw)
+
+  eccs = Select(ECC,["PulpPaperMills","Fertilizer","Petroleum","Cement","IronSteel",
+                      "Aluminum","OtherNonferrous","SAGDOilSands","CSSOilSands","OilSandsMining",
+                      "OilSandsUpgraders","SweetGasProcessing","SourGasProcessing","OtherChemicals",
+                      "Petrochemicals","IndustrialGas"])
+
+  # 
+  # Source: "CCS Curves Percent Reduction v4.1.xlsx" - Jeff Amlin 10/26/21
+  # SqA0 - Intercept
+  # SqB0 - Cost Slope 
+  # SqC0 - CCS Potential    
+  # SqCCThreshold - minimun value for CCS
+  # 
+  
+  # /                 ECC                     SqA0           SqB0          SqC0     SqCCThreshold
+  ReadTerms(data,"PulpPaperMills",       1.06072E+35,     -14.6798,      0.52000,        170.00)
+  ReadTerms(data,"Fertilizer",           3.76141E+20,     -9.37632,      0.74000,         86.00)
+  ReadTerms(data,"Petroleum",            2.54253E+20,     -9.33126,      0.65325,         85.00)
+  ReadTerms(data,"Cement",               3.76141E+20,     -9.37632,      0.83000,         86.00)
+  ReadTerms(data,"IronSteel",            1.06072E+35,     -14.6798,      0.52000,        170.00)
+  ReadTerms(data,"Aluminum",             3771377.887,     -3.71224,      0.86480,        155.00)
+  ReadTerms(data,"OtherNonferrous",      4.34133E+15,     -7.81964,      0.50295,         80.00)
+  ReadTerms(data,"SAGDOilSands",         3.52031E+31,    -13.43649,      0.80400,        150.00)
+  ReadTerms(data,"CSSOilSands",          3.52031E+31,    -13.43649,      0.80400,        150.00)
+  ReadTerms(data,"OilSandsMining",       1.42335E+34,    -14.36966,      0.60300,        165.00)
+  ReadTerms(data,"OilSandsUpgraders",    1.24152E+28,    -12.18405,      0.80400,        130.00)
+  ReadTerms(data,"SweetGasProcessing",   1796.881113,     -1.30184,      0.91169,         20.00)
+  ReadTerms(data,"SourGasProcessing",    1796.881113,     -1.30184,      0.91169,         20.00)
+  ReadTerms(data,"OtherChemicals",       8.27936E+10,     -5.51657,      0.60300,         30.00)
+  ReadTerms(data,"Petrochemicals",       1.71867E+20,     -9.24611,      0.71000,         84.00)
+  ReadTerms(data,"IndustrialGas",        1.71867E+20,     -9.24611,      0.71000,         84.00)
+
+  # 
+  # Heavy Oil in SK uses Cement for now - from Gavin - Jeff Amlin 11/03/22
+  # 
+  HeavyOilMining = Select(ECC,"HeavyOilMining")
+  Cement = Select(ECC,"Cement")
+  SK = Select(Area,"SK")
+  SqA0[HeavyOilMining,SK,Years] = SqA0[Cement,SK,Years]
+  SqB0[HeavyOilMining,SK,Years] = SqB0[Cement,SK,Years]
+  SqC0[HeavyOilMining,SK,Years] = SqC0[Cement,SK,Years]
+  SqCCThreshold[HeavyOilMining,SK,Years] = SqCCThreshold[Cement,SK,Years]
+
+  # 
+  # Electric Generation uses Cement for now - Jeff Amlin 11/03/22
+  #  
+  UtilityGen = Select(ECC,"UtilityGen")
+  SqA0[UtilityGen,areas,Years] = SqA0[Cement,areas,Years]
+  SqB0[UtilityGen,areas,Years] = SqB0[Cement,areas,Years]
+  SqC0[UtilityGen,areas,Years] = SqC0[Cement,areas,Years]
+  SqCCThreshold[UtilityGen,areas,Years] = SqCCThreshold[Cement,areas,Years]
+
+  # 
+  # Trend for availability of CCS
+  # 
+  @. SqC0Mult = 1
+  SqC0Mult[Yr(2022)] = 0.25
+  SqC0Mult[Yr(2026)] = 0.5
+  years = collect(Yr(2023):Yr(2025))
+  for year in years
+    SqC0Mult[year] = SqC0Mult[year-1] + (SqC0Mult[Yr(2026)] - 
+      SqC0Mult[Yr(2022)]) / (2026-2022)
+  end
+  
+  years = collect(Yr(2027):Yr(2039))
+  for year in years
+    SqC0Mult[year] = SqC0Mult[year-1] + (SqC0Mult[Yr(2040)] - 
+      SqC0Mult[Yr(2026)]) / (2040-2026)
+  end
+
+  # 
+  # Apply trend to only sectors covered by CFR
+  #   
+  eccs = Select(ECC,["SAGDOilSands","CSSOilSands","OilSandsMining","OilSandsUpgraders","HeavyOilMining","Petroleum"])
+  for year in Years, area in areas, ecc in eccs
+    SqC0[ecc,area,year] = SqC0[ecc,area,year] * SqC0Mult[year]
+  end
+
+  WriteDisk(db,"MEInput/SqA0", SqA0)
+  WriteDisk(db,"MEInput/SqB0", SqB0)
+  WriteDisk(db,"MEInput/SqC0", SqC0)
+  WriteDisk(db,"MEInput/SqCCThreshold", SqCCThreshold)
+
+  # 
+  # Transportation + storage cost per t CO2 (2016 CAD)
+  # Source Samuel Lord CCS presentation  
+  # Source: "CCS Curves Percent Reduction v3.1.xlsx" - Jeff Amlin 10/03/21
+  # 
+  # TODOJulia: Areas are out of order in the Promula version, code below has been adjusted to match
+  # Commented out lines are the correct values from the original .txp - Ian 02/04/25
+  #
+  SqTransStorageCost[Select(AreaDS,"Ontario"),1] =                 160
+  SqTransStorageCost[Select(AreaDS,"Quebec"),1] =                  200
+  SqTransStorageCost[Select(AreaDS,"British Columbia"),1] =        50
+  SqTransStorageCost[Select(AreaDS,"Alberta"),1] =                 20
+  SqTransStorageCost[Select(AreaDS,"Manitoba"),1] =                100
+  SqTransStorageCost[Select(AreaDS,"Saskatchewan"),1] =            20
+  #SqTransStorageCost[Select(AreaDS,"Nova Scotia"),1] =             240
+  #SqTransStorageCost[Select(AreaDS,"Newfoundland"),1] =            400
+  #SqTransStorageCost[Select(AreaDS,"New Brunswick"),1] =           200
+  SqTransStorageCost[Select(AreaDS,"Nova Scotia"),1] =             400 # Matches Promula results
+  SqTransStorageCost[Select(AreaDS,"Newfoundland"),1] =            200 # Matches Promula results
+  SqTransStorageCost[Select(AreaDS,"New Brunswick"),1] =           240 # Matches Promula results
+  SqTransStorageCost[Select(AreaDS,"Prince Edward Island"),1] =    300
+  SqTransStorageCost[Select(AreaDS,"Yukon Territory"),1] =         300
+  SqTransStorageCost[Select(AreaDS,"Northwest Territory"),1] =     400
+  SqTransStorageCost[Select(AreaDS,"Nunavut"),1] =                 600
+
+  for year in Years, area in areas
+    SqTransStorageCost[area,year] = SqTransStorageCost[area,1]
+  end
+
+  WriteDisk(db,"MEInput/SqTransStorageCost", SqTransStorageCost)
+end
+
+Base.@kwdef struct IControl
+  db::String
+
+  CalDB::String = "ICalDB"
+  Input::String = "IInput"
+  Outpt::String = "IOutput"
+  BCNameDB::String = ReadDisk(db,"MainDB/BCNameDB") #  Base Case Name
+
+  Enduse::SetArray = ReadDisk(db,"$Input/EnduseKey")
+  EnduseDS::SetArray = ReadDisk(db,"$Input/EnduseDS")
+  Enduses::Vector{Int} = collect(Select(Enduse))
+
+  SqEnMap::VariableArray{1} = ReadDisk(db,"$Input/SqEnMap") # [Enduse] Sequestering Enduse Map (1=include)
+
+end
+
+function IndPolicy(db)
+  data = IControl(; db)
+  (; CalDB,Input,Outpt) = data
+  (; Enduse,EnduseDS,Enduses) = data
+  (; SqEnMap) = data
+  
+  for enduse in Enduses
+    SqEnMap[enduse] = 1.0
+  end
+  
+  SqEnMap[Select(Enduse, "OffRoad")] = 1.0
+
+  WriteDisk(db,"$Input/SqEnMap", SqEnMap)
+end
+
+function PolicyControl(db)
+  @info "GHG_CCSCurves.jl - PolicyControl"
+  MacroPolicy(db)
+  IndPolicy(db)
+end
+
+if abspath(PROGRAM_FILE) == @__FILE__
+  PolicyControl(DB)
+end
+
+end
