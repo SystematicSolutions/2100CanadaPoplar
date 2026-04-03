@@ -1,0 +1,23 @@
+#
+# .gitignore
+#
+
+#
+# Do not include (ignore) these files
+#
+*.log
+*.tmp
+*.bak
+*.db
+*.hdf5
+*.dta
+*.zip
+
+#
+# Ignore directories
+#
+/Output/*
+/vscode-extension/
+/FromOthers/
+/backups/
+/2020TOM/ArchiveOutputFiles/
