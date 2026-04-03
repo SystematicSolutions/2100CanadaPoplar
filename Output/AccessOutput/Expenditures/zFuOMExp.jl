@@ -106,7 +106,7 @@ function zFuOMExp_DtaRun(data,nation,nationkey)
 end # function zFuOMExp_DtaRun
 
 
-function zFuOMExp_DtaControl(db))
+function zFuOMExp_DtaControl(db)
   data = zFuOMExpData(; db)
   (; Nation,Nations) = data
   (; NationOutputMap) = data
