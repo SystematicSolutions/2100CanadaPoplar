@@ -1,0 +1,36 @@
+*
+* CsvTxoTemplate.txo - &Name&.temp
+*
+Select Output &Name&.log
+*
+Open Segment "2020.xeq"
+Read Segment Main, Do(Compile)
+Open Segment "MControl.xeq"
+Read Segment MControl,Do(Compile)
+*
+Open SInput "SInput.dba"
+Open SOutput "SOutput.dba"
+*
+OpenDB
+DBOpen
+*
+Define Variable
+&VariableDefinition&
+ZZZ(Year)      'Variable for Displaying Outputs', Type=Real(15,6)
+End Define Variable
+*
+OutFil= "&Name&.csv"
+Select Output OutFil,PRINTER=ON,LINES=65,Width=1200,HEADING=OFF,QUOTES=ON,COMMA=OFF
+
+Select Year(&StartYear&-&EndYear&)
+*
+&StartVariableLoops&
+  ZZZ(Year) = &NameWithSets&
+  Write ("KOutput,", &AreaName&Label::0, ",", "&Name&, "V,", "L,", "&StartYear&01,", "&EndYear&01,", "&EndYear&01,", "&YearCount&@01", (Year)(",",ZZZ(Year)))
+&EndVariableLoops&
+*
+CloseDB
+*
+Select Output &Name&.log
+Write (OutFil, " has completed successfully.")
+Stop Promula

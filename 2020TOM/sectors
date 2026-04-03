@@ -1,0 +1,226 @@
+4
+E3NA
+WDMacro                    No  Suff  Gps1      Gps2      Gps3     Var help files
+ALBERTA  Alberta           2   AB   1    5    76   85   500  509                  
+B_COLUMB Brit. Columbia    3   BC   11   15   86   95   510  519                  
+MANITOBA Manitoba          4   MB   16   20   96  105   520  529                  
+NBRUNSWK New Brunswick     5   NB   21   25  106  115   530  539                 
+NFOUNLND Nfld & Labrador   6   NL   26   30  116  125   540  549                  
+NOVA_SCO Nova Scotia       7   NS   31   35  126  135   550  559                  
+ONTARIO  Ontario           8   ON   36   40  136  145   560  569                  
+QUEBEC   Quebec            9   QC   41   45  146  155   570  579                  
+SASKCHWN Saskatchewan      10  SK   46   50  156  165   580  589                  
+PRINCE_E Prince Edward Isl 11  PE   51   55  166  175   590  599                  
+NUNAVUT  Nunavut           12  NU   56   60  176  185   600  609                  
+YUKON    Yukon             13  YT   61   65  186  195   610  619                  
+NORTHWT  Northwest Terr    14  NT   66   70  196  205   620  629                  
+CANADA   Canada            1   CA   71   75  206  215   630  639     
+NEWENG   New England       16  NE  305  319    0    0   0    0
+MIDATLAN Mid Atlantic      17  MA  320  334    0    0   0    0 
+ENC      East North Cntrl  18  EN  335  349    0    0   0    0   
+WNC      West North Cntrl  19  WN  350  364    0    0   0    0
+SATLAN   South Atlantic    20  SA  365  379    0    0   0    0
+ESC      East South Cntrl  21  ES  380  394    0    0   0    0
+WSC      West South Cntrl  22  WS  395  409    0    0   0    0
+MOUNTAIN Mountain          23  MN  410  424    0    0   0    0
+PACIFIC  Pacific ex CA     24  PC  425  439    0    0   0    0
+CALI     California        25  CL  440  454    0    0   0    0
+USA      United States     15  US  455  469    0    0   0    0 
+NAMERICA North America     26  NA  470  484    0    0   0    0
+WORLD    World                 WD  300  301    0    0   0    0     
+******************EXEs & Tables****************************************************
+INDEX_VER_361713181_8
+GENMOD
+GENOUTW
+WDTABW
+WDDIFW
+Summary Items - % changes
+Summary Items
+GDP and Components (% ch in Emerging Markets)
+GDP and Components-% ch(Bal.of Pay in Emerging Markets)
+Personal Income and Expenditure
+Personal Income and Expenditure-% changes                   
+Trade and Balance of Payments                        
+Trade and Balance of Payments - % changes                        
+Cross Exchange Rates                              
+Labour Market Indicators                          
+Labour Market Indicators - % changes                          
+Company Sector and Supply Side                        
+Company Sector and Supply Side-% changes                        
+Inflation Indicators                              
+Government Finances                               
+Government Finances - % changes                               
+Public Finances (UK only)                                  
+Personal Sector Financial Assets (UK)                  
+Personal Sector Fin. Assets-% changes(UK)                 
+Personal Sector Fin. Liabilities (UK)            
+Personal Sector Fin. Liabil.-% changes(UK)            
+Personal Sector Wealth/Money Supply (UK)                           
+Personal Sect. Wealth/Money Sup.-% ch.(UK)            
+Housing Market (UK)                                   
+Housing Market - % changes (UK)                                   
+Manufacturing Sector (UK)
+Manufacturing Sector - % changes (UK)
+Federal Government Finances (US)
+Federal Government Fin. - % changes (US)
+State & Local Government Finances (US)
+State & Local Gov. Fin. - % changes (US)
+Inflation Indicators(CHINA)
+Inflation Indicators - % changes(CHINA)
+Yuan Cross Exchange Rates (CHINA)                            
+Capital Investment & Savings (CHINA)
+Capital Investment & Savings - % changes (CHINA)
+Employment (CHINA)
+Employment - % changes (CHINA)
+Government Financial Accounts (CHINA)
+Government Financial Accounts - % changes (CHINA)
+Nominal GDP and its Components (CHINA)
+Nominal GDP and its Components-% ch(CHINA)
+Balance of Payments (CHINA)
+GDP Components - levels (NIGERIA)
+GDP Components - growth rates (NIGERIA)
+Financial Markets
+Financial Markets - % changes
+Interest Rates, Exchange Rates, BOP
+Interest Rates, Exchange Rates, BOP - % changes
+Total Owned Financial Wealth
+Households Pension and non-Pension Financial Wealth
+Households Financial Non-Pension Wealth
+Corporate Financial Wealth
+Agent Holdings of Financial Assets
+Bond Market Holdings
+Cash and Other Assets Markets
+Key Shares in Asset Allocations (%)
+World Comparisons
+Domestic Fuel Market (UAE)
+Public Finances (UAE)
+Employment by Industry (Canadian Provinces)
+GVA by Industry (Canadian Provinces)
+Key Indicators (Canadian Provinces)
+Key Housing Sector Indicators (Canadian Provinces)
+&&&&&&&&&&&&&&&&&&Overview table titles&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+GROSS DOMESTIC/NATIONAL PRODUCT                                               
+CONSUMERS' EXPENDITURE                                                        
+GROSS FIXED INVESTMENT                                                        
+CONSUMER PRICES                                                               
+INDUSTRIAL PRODUCTION                                                         
+UNEMPLOYMENT RATES (%)                                                        
+EXPORTS OF GOODS (VOLUMES)                                                    
+IMPORTS OF GOODS (VOLUMES)                                                    
+VISIBLE TRADE BALANCES                                                        
+CURRENT ACCOUNT BALANCES                                                      
+AVERAGE EXCHANGE RATES                                                        
+AVERAGE EXCHANGE RATES (ANNUAL % CHANGE)                                      
+SHORT-TERM INTEREST RATES                                                     
+LONG-TERM INTEREST RATES                                                      
+SHORT-TERM INTEREST RATE DIFFERENTIALS                                        
+LONG-TERM INTEREST RATE DIFFERENTIALS                                         
+COMMODITY PRICES                                                              
+COMMODITY PRICES                                                              
+GROSS DOMESTIC PRODUCT - COUNTRIES IN ZONES             
+CONSUMER PRICES - COUNTRIES IN ZONES                    
+CURRENT ACCOUNT BAL. - COUNTRIES IN ZONES           
+AVERAGE EXCHANGE RATES - COUNTRIES IN ZONES             
+EUROZONE GDP, INDUSTRIAL PROD & UNEMPLOYMENT                               
+EUROZONE DOMESTIC DEMAND                                                        
+EUROZONE NET TRADE                                                              
+EUROZONE INTEREST RATES & INFLATION                                             
+EUROZONE TRADE & CURRENT ACCOUNT BALANCES                                       
+EUROZONE GOVERNMENT FINANCES & MONEY SUPPLY                                     
+EMERGING MARKETS - GDP GROWTH                                                  
+EMERGING MARKETS - BALANCE OF PAYMENTS IN US $ BN                                                  
+EMERGING MARKETS - BALANCE OF PAYMENTS AS % OF GDP                                                  
+EMERGING MARKETS - GOVERNMENT BALANCE AS % OF GDP                                                  
+EMERGING MARKETS - EXTERNAL DEBT AS % OF GDP                                                  
+EMERGING MARKETS - CONSUMER PRICE INDEX (ANNUAL % CHANGE)                                                 
+EMERGING MARKETS - EXCHANGE RATES (PER US$)                                                  
+******************Coefficient numbers & description - last used as default********************************
+1,'Max. no. of iterations allowed in any period'
+2,'Max. no. of variables to fail convergence before run aborted'
+3,'Max. no. of non-converged variables to be printed out'
+8,'Max. no. of errors in input deck before run aborted'
+9,'Extrapolation value'
+10,'Period from which extrapolation should be made'
+11,'Proportional convergence tolerance'
+500,'Earliest storage year needed for tables'
+501,'Earliest storage year needed for solution'
+502,'Latest storage year needed for solution'
+1001,'General Coefficient'
+****************** Template filenames & descriptions******************
+'TAB1.TPT','Forecast Summary'
+'TAB2.TPT','GDP and its Components'
+'TAB3.TPT','Personal Income and Expenditure'
+'TAB4.TPT','Fixed Investment'
+'TAB5.TPT','Current Account'
+'TAB6.TPT','Inflation Indicators'
+'TAB7.TPT','Goverment Finances'
+'TAB8.TPT','Financial Indicators'
+'TAB9.TPT','Labour Market Indicators'
+'TAB10.TPT','Contributions to GDP Growth'
+'OV1.TPT','Gross Domestic Product'
+'OV2.TPT','Consumers'' Expenditure'
+'OV3.TPT','Gross Fixed Investment'
+'OV4.TPT','Consumer Prices'
+'OV5.TPT','Industrial Production'
+'OV6.TPT','Unemployment Rates'
+'OV7.TPT','Exports of Goods'
+'OV8.TPT','Imports of Goods'
+'OV9.TPT','Visible Trade Balances'
+'OV10.TPT','Current Account Balances'
+'OV11.TPT','Average Exchange Rates'
+'OV12.TPT','Short Term Interest Rates'
+'OV13.TPT','Long Term Interest Rates'
+'OV14.TPT','Short Term Interest Rate Differentials'
+'OV15.TPT','Long Term Interest Rate Differentials'
+'OV16.TPT','Commodity Prices'
+'ENERGY.TPT','G7 Sectoral Energy Overview'
+'OIL.TPT','Oil Demand'
+'GAS.TPT','Gas Demand'
+'COAL.TPT','Coal Demand'
+'CARBON.TPT','Carbon Emissions'
+'PRIMARY.TPT','Total Primary Energy Demand'
+'OILBBD.TPT','Energy Demands, Supplies and Balances'
+'UK.TPT','The Oxford UK Forecast'
+'UKFISCAL.TPT','The Oxford UK Forecast - Fiscal Years'
+'UKMAN.TPT','UK Manufacturing Sector'
+'USMISC.TPT','US Miscellaneous Indicators'
+'USINF.TPT','US Additional Inflation Indicators'
+'USGOVFED.TPT','US Federal Government Detail'
+'USGOVSL.TPT','US State and Local Government Detail'
+'HKTAB.TPT','Extra Hong Hong Details'
+'INTSUMMF.TPT','Summary of Forecasts'
+'COUNTRY.TPT','Country Tables'
+'FINMOD.TPT','G6 Financial Satellites Model - Part 1'
+'FINMOD1.TPT','G6 Financial Satellites Model - Part 2'
+'SCANCTRY.TPT','Scandinavian Countries'
+'OVXBCU.TPT','Countries in Zones - Balance of Payments'
+'OVXRXD.TPT','Countries in Zones - Excange Rate'
+'OVXCPI.TPT','Countries in Zones - Consumer Price Indices'
+'OVXGDP.TPT','Countries in Zones - GDP'
+'EUROBVI.TPT','EuroZone - Trade balance'
+'EUROBCU.TPT','EuroZone - Current Account'
+'EUROC.TPT','EuroZone - Private Consumption'
+'EUROCPI.TPT','EuroZone - Inflation'
+'EUROGB.TPT','EuroZone - Government deficit'
+'EUROGC.TPT','EuroZone - Government consumption'
+'EUROGDP.TPT','EuroZone - GDP'
+'EUROGDB.TPT','EuroZone  - Government debt'
+'EUROIF.TPT',',EuroZone - Investment'
+'EUROIP.TPT',',EuroZone - Industrial Production'
+'EUROM.TPT',',EuroZone - Imports'
+'EUROMON.TPT',',EuroZone - Money supply'
+'EURORSH.TPT','EuroZone - Sort-term interest rates'
+'EURORLG.TPT','EuroZone - Long-term interest rates'
+'EUROUP.TPT','EuroZone - Unemployment rates'
+'EUROX.TPT',',EuroZone - Exports'
+'BANKCH.TPT',',Banking Sector - China'
+'BANKHK.TPT',',Banking Sector - Hongkong'
+'BANKJAP.TPT',',Banking Sector - Japan'
+'BANKKOR.TPT',',Banking Sector - Korea'
+'BANKTAI.TPT',',Banking Sector - Taiwan'
+'BANKPHIL.TPT',',Banking Sector - Philippines'
+'BANKTHAI.TPT',',Banking Sector - Thailand'
+'BANKMAY.TPT',',Banking Sector - Malaysia'
+'BANKINS.TPT',',Banking Sector - Indonesia'
+'OPECNEW.TPT',',OPEC Data'
+*************************************************

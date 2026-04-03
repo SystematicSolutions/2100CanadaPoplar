@@ -1,0 +1,10 @@
+"Please note that pre-defined scenarios are no longer updated on this version of","BlankScenario.run",""
+"the model. We have migrated various scenarios to the Global Model Workstation,","BlankScenario.run",""
+"alongside our regularly updated Global Scenarios Service","BlankScenario.run",""
+
+"You can download the Global Model Workstation from our website:","BlankScenario.run",""
+"https://oxfordeconomics.com/my-oxford/global-economic-model","BlankScenario.run",""
+
+"For any queries, please contact our support system at:","BlankScenario.run",""
+"support@oxfordeconomics.com","BlankScenario.run",""
+

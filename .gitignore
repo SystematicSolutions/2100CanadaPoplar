@@ -12,6 +12,19 @@
 *.hdf5
 *.dta
 *.zip
+*.csv
+*.exe
+*.dll
+*.out
+*.pak
+*.txtt
+*.gmw
+*.xml
+*.xlsx
+*.mdb
+
+
+
 
 #
 # Ignore directories
@@ -21,3 +34,4 @@
 /FromOthers/
 /backups/
 /2020TOM/ArchiveOutputFiles/
+/zz*/

@@ -1,0 +1,13 @@
+       Oxford Economics Standard Global Model Oct 2018
+
+Thank you for installing the Oxford Economics Standard Global Economic Model.
+This is a marker file to identify that the installation in the month given by the
+ title of the file uses the Standard version of our model.
+
+ We also have an Extended model which includes an additional 108 smaller countries,
+ on top of the regular 80 countries covered by the standard model.
+
+ For more information on the extended model, please visit
+        https://www.oxfordeconomics.com/proxy-model
+
+ For any questions, please contact Your Oxford Economics Account manager

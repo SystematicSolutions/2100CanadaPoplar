@@ -1,0 +1,36 @@
+*
+* SetAsBaseCase.txt
+*
+Select Output SetAsBaseCase.log
+*
+Open Segment "2020.xeq"
+Read Segment Main, Do(Compile)
+Open Segment "KControl.xeq"
+Read Segment KControl, Do(Compile)
+*
+Open MInput "..\2020Model\MInput.dba"
+Open MOutput "..\2020Model\MOutput.dba"
+Open SInput "..\2020Model\SInput.dba"
+Open SOutput "..\2020Model\SOutput.dba"
+DBOpen
+*
+************************
+*
+* Set this case As the Base Case,
+* not the Reference Case or a Policy Case
+*
+BaseSw=1
+RefSwitch=0
+Write Disk(BaseSw,RefSwitch)
+*
+************************
+*
+DBClose
+CloseDB
+*
+************************
+*
+Write ("SetAsBaseCase.txt has completed successfully")
+Select Output Shell.log
+Write ("Shell.log file for SetAsBaseCase.txt.")
+Stop Promula
