@@ -1,0 +1,9 @@
+*
+* ProductionCapacity.txt - List of .txo files to run and move output dta to Access DB with same name as this file
+*
+zCUF
+zCUFAll
+zEUPC
+zEUPCAPC
+zEUPCRPC
+

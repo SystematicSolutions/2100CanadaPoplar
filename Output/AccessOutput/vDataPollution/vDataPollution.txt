@@ -1,0 +1,17 @@
+*
+* vDataPollution.txt - List of .txo files to run and move output dta to Access DB with same name as this file
+*
+vCogFPol
+vEnFPol
+vEUPOCX
+vFlPol
+vFsPOCX
+vFuPol
+vMEPol
+vOREnFPol
+vPOCX
+vTrEnFPol
+vTrFsPOCX
+vTrMEPol
+vTrPOCX
+vVnPol

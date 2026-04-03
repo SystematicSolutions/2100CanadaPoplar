@@ -1,0 +1,17 @@
+*
+* Pollution.txt List of .txo files to run and move output dta to Access DB with same name as this file
+*
+*
+zCgFPol
+zEndusePol
+zEnFPol
+zEnNonCgFPol
+zEUEuPol
+zEuFPol
+zFlPol
+zFuPol
+zMEPol
+zNcFPol
+zSqPol
+zTotPol
+zVnPol

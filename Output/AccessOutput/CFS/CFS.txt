@@ -1,0 +1,37 @@
+*
+* CFS.txt - List of .txo files to run and move output dta to Access DB with same name as this file
+*
+zCoverageCFS
+zCreditsBanked
+zCreditsFossil
+zCreditsGenerated
+zCreditsInventory
+zCreditsLowCarbon
+zCreditsNeeded
+zCreditsOther
+zCreditsRedeemed
+zCreditsRequired
+zCreditsSequester
+zCreditsTech
+zDemandCFS
+zDmFracMaxCurve
+zECFPFuel
+zECFPFuelAvg
+zEICFS
+zEIGapCFS
+zEIGoalCFS
+zEIImports
+zEINation
+zEIOfficial
+zEIOfficialCurve
+zEISector
+zEISectorN
+zENPNCurve
+zFPCFSCredit
+zFPCFSFuel
+zFPCFSObligated
+zObligatedCFS
+zSubsidySC
+zSupplyCurve
+* zEICreditMult
+* zEIGoal

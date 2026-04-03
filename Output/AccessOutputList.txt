@@ -1,0 +1,32 @@
+*
+* AccessOutputList.txt
+*
+**************************************************************
+*  List of Access Output files to run - data read from Promula
+**************************************************************
+*
+* Txts (filename.txt) files will be read from Promula using txo files
+* in 2020Model\AccessOutput.
+*
+CFS.txt
+EmissionCoefficients.txt
+Pollution.txt
+DeviceEnergy.txt
+Cogeneration.txt
+ElectricUnits.txt
+Transportation.txt
+ProcessEnergy.txt
+EnergyDemands.txt
+Expenditures.txt
+ExtraEconomic.txt
+EnergySupply.txt
+ProductionCapacity.txt
+TransPollution.txt
+TOMAlignment.txt
+EconomicDrivers.txt
+EmissPolicy.txt
+vDataCompare.txt
+vDataPollution.txt
+CFSTransport.txt
+Vintages.txt
+*

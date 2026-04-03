@@ -1,0 +1,9 @@
+*
+* TransPollution.txt List of .txo files to run and move output dta to Access DB with same name as this file
+*
+zFsPOCX_Trans
+zPOCA_Trans
+zTrORMEPol
+zTrNcFPol
+zTrMEPol
+zTrPol

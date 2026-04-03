@@ -1,0 +1,13 @@
+*
+* Transportation.txt - List of .txo files to run and move output dta to Access DB with same name as this file
+*
+zTrDCC
+zTrDEE
+zTrDEEA
+zTrDmd
+zTrFsDmd
+zTrMMSF
+zTrXMMSF
+zTrTKM
+zTrVDT
+zTrAMSF

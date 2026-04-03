@@ -1,0 +1,20 @@
+*
+* TOMAlignment.txt - List of output files that compare TOM values to E2020 to check TOM alignment.
+*
+zE2020TOMMaps
+zEInt_EnergyIntensity
+zEInt_EnergyIntensity_Trans
+zEN_EnergyDemand_Res
+zEPermit_PermitExpenditures
+zGYEONominal_OilGasRevenue
+zKM_VehicleDistance
+zKMShare_VehicleDistanceShare
+zMN_ImportsDomestic
+zMX_ImportsInternational
+zP_DeliveredPrice
+zQ_Production
+zWP_WholesalePrices
+zXN_ExportsDomestic
+zXX_ExportsInternational
+
+

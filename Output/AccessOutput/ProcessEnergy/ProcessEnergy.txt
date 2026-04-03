@@ -1,0 +1,14 @@
+*
+* ProcessEnergy.txt List of .txo files to run and move output dta to Access DB with same name as this file
+*
+zPCC
+zPEE
+zPEEA
+zPER
+zPERA
+zPERR
+zPEM
+zPEMM
+zRPEE
+zRPCC
+zRPMSF
