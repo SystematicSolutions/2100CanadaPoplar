@@ -1,0 +1,14 @@
+*
+* MacroInputVariables.txt
+*
+vExchg
+vFloorspace
+vGO
+vGOAEO
+vGRP
+vInfla
+vPersonalIncome
+vPopT
+vVehicleSalesEURatio
+vVehicleSalesIndRatio
+vVehicleSalesTrRatio

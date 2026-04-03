@@ -1,0 +1,7 @@
+*
+* Options are
+*
+* ShowAllErrors 
+* DoNotShowErrors 
+*
+ShowAllErrors

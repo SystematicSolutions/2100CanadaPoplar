@@ -1,0 +1,7 @@
+vHDD
+vCDD
+vMinTemp
+vMaxTemp
+vAvgMinTemp
+vAvgMaxTemp
+vMeanTemp

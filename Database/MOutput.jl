@@ -1,0 +1,90 @@
+#
+# MOutput.jl - Input Database creation file
+#
+
+Base.@kwdef struct MOutput <: HDF5GroupDatabase
+  db::String=DB
+  ########################
+  #
+  # Define Sets
+  #
+  Waste = ReadSetFromCSV("Waste","Key")
+  Area = ReadSetFromCSV("Area","Key")
+  Year = ReadSetFromCSV("Year","Key")
+  tv = ReadSetFromCSV("tv","Key")
+  ECC = ReadSetFromCSV("ECC","Key")
+  GNode = ReadSetFromCSV("GNode","Key")
+  Nation = ReadSetFromCSV("Nation","Key")
+  Node = ReadSetFromCSV("Node","Key")
+  OGUnit = ReadSetFromCSV("OGUnit","Key")
+  RfUnit = ReadSetFromCSV("RfUnit","Key")
+  Unit = ReadSetFromCSV("Unit","Key")
+  Age = ReadSetFromCSV("Age","Key")
+  ########################
+  #
+  # Define Variables on Database
+  #
+  #! format: off
+  CH4Captured = CreateVariableInHDF5(db, "MOutput/CH4Captured", (:Waste, :Area, :Year),"CH4 Captured (Tonnes/Yr)","Tonnes/Yr")
+  CH4CapturedOffsets = CreateVariableInHDF5(db, "MOutput/CH4CapturedOffsets", (:Waste, :Area, :Year),"CH4 Captured from Offsets (Tonnes/Yr)","Tonnes/Yr")
+  CH4DivertedOffsets = CreateVariableInHDF5(db, "MOutput/CH4DivertedOffsets", (:Waste, :Area, :Year),"CH4 Reductions from Diverted Waste Offset (Tonnes/Yr)","Tonnes/Yr")
+  CH4Emitted = CreateVariableInHDF5(db, "MOutput/CH4Emitted", (:Waste, :Area, :Year),"CH4 Generated After Recovery <Qt>  (Tonnes)","Tonnes")
+  CH4Flared = CreateVariableInHDF5(db, "MOutput/CH4Flared", (:Waste, :Area, :Year),"CH4 Flared (Tonnes/Yr)","Tonnes/Yr")
+  CH4FlaredLosses = CreateVariableInHDF5(db, "MOutput/CH4FlaredLosses", (:Waste, :Area, :Year),"CH4 Flared Losses (Tonnes/Yr)","Tonnes/Yr")
+  CH4Generated = CreateVariableInHDF5(db, "MOutput/CH4Generated", (:Waste, :Area, :Year),"CH4 Generated From Decomposable Material <Qtx> (Tonnes/Yr)","Tonnes/Yr")
+  CH4Oxidized = CreateVariableInHDF5(db, "MOutput/CH4Oxidized", (:Waste, :Area, :Year),"CH4 Oxidized From Decomposable Material (Tonnes/Yr)","Tonnes/Yr")
+  DivertedBaseline = CreateVariableInHDF5(db, "MOutput/DivertedBaseline", (:Waste, :Area, :Year),"Diverted Waste from Exogenous Fraction (Tonnes/Yr)","Tonnes/Yr")
+  DivertedOffsets = CreateVariableInHDF5(db, "MOutput/DivertedOffsets", (:Waste, :Area, :Year),"Diverted Waste from Offsets (Tonnes/Yr)","Tonnes/Yr")
+  DOCDecomposed = CreateVariableInHDF5(db, "MOutput/DOCDecomposed", (:Waste, :Area, :Year),"DOC Decomposed in Landfill <DDOCm Decomp> (Tonnes/Yr)","Tonnes/Yr")
+  DOCDeposited = CreateVariableInHDF5(db, "MOutput/DOCDeposited", (:Waste, :Area, :Year),"DOC Deposited in Landfill <DDOCm> (Tonnes/Yr)","Tonnes/Yr")
+  DOCStock = CreateVariableInHDF5(db, "MOutput/DOCStock", (:Waste, :Area, :Year),"Stock of Decomposable DOC in Landfill <DDOCma> (Tonnes)","Tonnes")
+  Driver = CreateVariableInHDF5(db, "MOutput/Driver", (:ECC, :Area, :Year),"Economic Driver (Various Units)","Various Units")
+  ECUF = CreateVariableInHDF5(db, "MOutput/ECUF", (:ECC, :Area, :Year),"Driverl Utilization Fraction (Fraction)","Fraction")
+  Emp = CreateVariableInHDF5(db, "MOutput/Emp", (:ECC, :Area, :Year),"Employment (Thousands)","Thousands")
+  ExchangeRate = CreateVariableInHDF5(db, "MOutput/ExchangeRate", (:Area, :Year),"Local Currency/US\$ Exchange Rate (Local\$/US\$)","Local\$/US\$")
+  ExchangeRateGNode = CreateVariableInHDF5(db, "MOutput/ExchangeRateGNode", (:GNode, :Year),"Local Currency/US\$ Exchange Rate (Local\$/US\$)","Local\$/US\$")
+  ExchangeRateNation = CreateVariableInHDF5(db, "MOutput/ExchangeRateNation", (:Nation, :Year),"Local Currency/US\$ Exchange Rate (Local\$/US\$)","Local\$/US\$")
+  ExchangeRateNode = CreateVariableInHDF5(db, "MOutput/ExchangeRateNode", (:Node, :Year),"Local Currency/US\$ Exchange Rate (Local\$/US\$)","Local\$/US\$")
+  ExchangeRateOGUnit = CreateVariableInHDF5(db, "MOutput/ExchangeRateOGUnit", (:OGUnit, :Year),"Local Currency/US\$ Exchange Rate (Local\$/US\$)","Local\$/US\$")
+  ExchangeRateRfUnit = CreateVariableInHDF5(db, "MOutput/ExchangeRateRfUnit", (:RfUnit, :Year),"Refinery Exchange Rate(\$/\$)","\$/\$")
+  ExchangeRateUnit = CreateVariableInHDF5(db, "MOutput/ExchangeRateUnit", (:Unit, :Year),"Local Currency/US\$ Exchange Rate (Local\$/US\$)","Local\$/US\$")
+  Floorspace = CreateVariableInHDF5(db, "MOutput/Floorspace", (:ECC, :Area, :Year),"Floorspace (Million Sq Ft)","Million Sq Ft")
+  GasDemand = CreateVariableInHDF5(db, "MOutput/GasDemand", (:Area, :Year),"Gas Demands including NG, RNG,and H2 (TBtu/Yr)","TBtu/Yr")
+  GDPDeflator = CreateVariableInHDF5(db, "MOutput/GDPDeflator", (:Nation, :Year),"GDP Deflator (Index)","Index")
+  GO = CreateVariableInHDF5(db, "MOutput/GO", (:ECC, :Area, :Year),"Gross Output (M\$/Yr)","M\$/Yr")
+  GRP = CreateVariableInHDF5(db, "MOutput/GRP", (:Area, :Year),"Gross Region Product (1997 Million CN\$/Yr)","1997 Million CN\$/Yr")
+  GRPGR = CreateVariableInHDF5(db, "MOutput/GRPGR", (:Area, :Year),"Gross Regional Product Growth Rate (1/Yr)","1/Yr")
+  HHS = CreateVariableInHDF5(db, "MOutput/HHS", (:ECC, :Area, :Year),"Households (000 Households)","000 Households")
+  HSize = CreateVariableInHDF5(db, "MOutput/HSize", (:ECC, :Area, :Year),"Average Household Size (People/Household)","People/Household")
+  Inflation = CreateVariableInHDF5(db, "MOutput/Inflation", (:Area, :Year),"Inflation Index (\$/\$)","\$/\$")
+  InflationGNode = CreateVariableInHDF5(db, "MOutput/InflationGNode", (:GNode, :Year),"Inflation Index (\$/\$)","\$/\$")
+  InflationNation = CreateVariableInHDF5(db, "MOutput/InflationNation", (:Nation, :Year),"Inflation Index (\$/\$)","\$/\$")
+  InflationNode = CreateVariableInHDF5(db, "MOutput/InflationNode", (:Node, :Year),"Inflation Index (\$/\$)","\$/\$")
+  InflationOGUnit = CreateVariableInHDF5(db, "MOutput/InflationOGUnit", (:OGUnit, :Year),"Inflation Index (\$/\$)","\$/\$")
+  InflationRfUnit = CreateVariableInHDF5(db, "MOutput/InflationRfUnit", (:RfUnit, :Year),"Inflation Index (\$/\$)","\$/\$")
+  InflationUnit = CreateVariableInHDF5(db, "MOutput/InflationUnit", (:Unit, :Year),"Inflation Index (\$/\$)","\$/\$")
+  InflationRate = CreateVariableInHDF5(db, "MOutput/InflationRate", (:Area, :Year),"Inflation Rate (1/Yr)","1/Yr")
+  InflationRateNation = CreateVariableInHDF5(db, "MOutput/InflationRateNation", (:Nation, :Year),"Inflation Rate (1/Yr)","1/Yr")
+  InSm = CreateVariableInHDF5(db, "MOutput/InSm", (:Area, :Year),"Smoothed Inflation Rate (1/Yr)","1/Yr")
+  MEDriver = CreateVariableInHDF5(db, "MOutput/MEDriver", (:ECC, :Area, :Year),"Driver for Process Emissions (Various Units)","Various Units")
+  PC = CreateVariableInHDF5(db, "MOutput/PC", (:ECC, :Area, :Year),"Production Capacity (M\$/Yr)","M\$/Yr")
+  PCA = CreateVariableInHDF5(db, "MOutput/PCA", (:Age, :ECC, :Area, :Year),"Production Capacity Additions (\$/Yr/Yr)","\$/Yr/Yr")
+  PCLV = CreateVariableInHDF5(db, "MOutput/PCLV", (:Age, :ECC, :Area, :Year),"Production Capacity (\$/Yr)","\$/Yr")
+  PCR = CreateVariableInHDF5(db, "MOutput/PCR", (:Age, :ECC, :Area, :Year),"Production Capacity Retirements (\$/Yr/Yr)","\$/Yr/Yr")
+  Pop = CreateVariableInHDF5(db, "MOutput/Pop", (:ECC, :Area, :Year),"Population (Millions)","Millions")
+  PopT = CreateVariableInHDF5(db, "MOutput/PopT", (:Area, :Year),"Population (Millions)","Millions")
+  ProportionDivertedWasteOutput = CreateVariableInHDF5(db, "MOutput/ProportionDivertedWasteOutput", (:Waste, :Area, :Year),"Proportion of Diverted Waste <PDvW> (Tonnes/Tonnes)","Tonnes/Tonnes")
+  RPI = CreateVariableInHDF5(db, "MOutput/RPI", (:Area, :Year),"Personal Income (1997 Million CN\$/Yr)","1997 Million CN\$/Yr")
+  THHS = CreateVariableInHDF5(db, "MOutput/THHS", (:Area, :Year),"Total Households (Households)","Households")
+  WasteDeposited = CreateVariableInHDF5(db, "MOutput/WasteDeposited", (:Waste, :Area, :Year),"Waste Deposited in Landfill (Tonnes/Yr)","Tonnes/Yr")
+  WasteDisposed = CreateVariableInHDF5(db, "MOutput/WasteDisposed", (:Waste, :Area, :Year),"Waste Disposed (Tonnes/Yr)","Tonnes/Yr")
+  WasteDisposedBaseline = CreateVariableInHDF5(db, "MOutput/WasteDisposedBaseline", (:Waste, :Area, :Year),"Waste Disposed from Exogenous Fraction (Tonnes/Yr)","Tonnes/Yr")
+  WasteDiverted = CreateVariableInHDF5(db, "MOutput/WasteDiverted", (:Waste, :Area, :Year),"Diverted Waste (Tonnes/Yr)","Tonnes/Yr")
+  WasteDivertedBaseline = CreateVariableInHDF5(db, "MOutput/WasteDivertedBaseline", (:Waste, :Area, :Year),"Diverted Waste from Exogenous Fraction (Tonnes/Yr)","Tonnes/Yr")
+  WasteDriver = CreateVariableInHDF5(db, "MOutput/WasteDriver", (:Waste, :Area, :Year),"Driver for Waste Generations (Various Units/Yr)","Various Units/Yr")
+  WasteDriverMap::SetArray = Waste
+  WasteExported = CreateVariableInHDF5(db, "MOutput/WasteExported", (:Waste, :Area, :Year),"Exported Waste (Tonnes/Yr)","Tonnes/Yr")
+  WasteGenerated = CreateVariableInHDF5(db, "MOutput/WasteGenerated", (:Waste, :Area, :Year),"Waste Generated (Tonnes/Yr)","Tonnes/Yr")
+  WasteIncinerated = CreateVariableInHDF5(db, "MOutput/WasteIncinerated", (:Waste, :Area, :Year),"Incinerated Waste (Tonnes/Yr)","Tonnes/Yr")
+  WastePerDriverOutput = CreateVariableInHDF5(db, "MOutput/WastePerDriverOutput", (:Waste, :Area, :Year),"Waste Generated per Driver <WGC> (Tonnes/Person)","Tonnes/Person")
+end # struct MOutput

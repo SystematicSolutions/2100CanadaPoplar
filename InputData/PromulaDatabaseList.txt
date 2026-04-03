@@ -1,0 +1,23 @@
+*
+* PromulaDatabaseList.txt
+*
+* Folder\FileName
+*
+PromulaEngine;SpInput
+PromulaEngine;EGInput
+PromulaEngine;EGOutput
+PromulaEngine;KInput
+PromulaEngine;KOutput
+PromulaEngine;MInput
+PromulaEngine;MOutput
+PromulaEngine;SInput
+PromulaEngine;SOutput
+PromulaEngine;SpOutput
+PromulaEngine;TCalDB
+PromulaEngine;TOutput
+PromulaEngine;VBInput
+PromulaEngine;vData_ElectricUnits
+
+
+
+
